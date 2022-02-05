@@ -1,3 +1,7 @@
+const correctCol = "#21b021"
+const presentCol = "#d4b90d"
+const absentCol = "Gray"
+
 const guesses = document.getElementsByClassName("guess-row") // Row in table containing guess letters
 var letterCells // Cells in table containing a letter of the guess
 var solution = "hello"
@@ -33,9 +37,11 @@ function checkGuess(guess)
         const guessChar = guess.charAt(i)
 
         if (guessChar == solution.charAt(i)) // Is the letter in the same position in the solution?
-            letterCells[i].style.backgroundColor = "LimeGreen"
+            letterCells[i].style.backgroundColor = correctCol
         else if (solution.includes(guessChar)) // Does the letter appear in any position in the solution?
-            letterCells[i].style.backgroundColor = "Yellow"
+            letterCells[i].style.backgroundColor = presentCol
+        else // Letter absent in solution
+            letterCells[i].style.backgroundColor = absentCol
     }
 
     const guessInput = document.getElementById("guess") // Get guess input field
@@ -47,6 +53,5 @@ function checkGuess(guess)
     {
         guessInput.placeholder = "" // Clear placeholder
         guessInput.disabled = true // Disable guess input
-        guessInput.blur()
     }
 }
