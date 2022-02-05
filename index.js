@@ -1,7 +1,7 @@
-const guessInput = document.getElementById("guess")
-const guesses = document.getElementsByClassName("guess-row")
-
+const guesses = document.getElementsByClassName("guess-row") // Row in table containing guess letters
+var letterCells // Cells in table containing a letter of the guess
 var solution = "hello"
+var guessIndex = 0
 
 window.onkeyup = keyUp
 
@@ -9,32 +9,44 @@ function keyUp(e)
 {
     const input = e.target.value
 
-    if (input != undefined)
+    if (input == undefined)
+        return
+    
+    letterCells = guesses[guessIndex].getElementsByClassName("letter") // Assign letterCells to the cells of the current guess
+
+    for (var i = 0; i < 5; i++) // For each letter cell
     {
-        const letterCells = guesses[0].getElementsByClassName("letter")
-
-        for (var i = 0; i < 5; i++)
-        {
-            if (i < input.length)
-                letterCells[i].innerHTML = input.charAt(i)
-            else
-                letterCells[i].innerHTML = ""
-        }
-
-        if (input.length == 5)
-            checkGuess(letterCells, input)
+        if (i < input.length)
+            letterCells[i].innerHTML = input.charAt(i) // Set cell value to the corresponding letter in the guess
+        else
+            letterCells[i].innerHTML = "" // Ensure cell is empty (e.g., if a character was removed)
     }
+
+    if (input.length == 5) // Full guess input
+        checkGuess(input)
 }
 
-function checkGuess(letterCells, guess)
+function checkGuess(guess)
 {
-    for (var i = 0; i < 5; i++)
+    for (var i = 0; i < 5; i++) // For each letter in the guess
     {
         const guessChar = guess.charAt(i)
 
-        if (guessChar == solution.charAt(i))
+        if (guessChar == solution.charAt(i)) // Is the letter in the same position in the solution?
             letterCells[i].style.backgroundColor = "LimeGreen"
-        else if (solution.includes(guessChar))
+        else if (solution.includes(guessChar)) // Does the letter appear in any position in the solution?
             letterCells[i].style.backgroundColor = "Yellow"
+    }
+
+    const guessInput = document.getElementById("guess") // Get guess input field
+
+    guessInput.value = "" // Clear guess input
+    guessIndex++
+
+    if (guessIndex >= 5) // If guesses exhausted
+    {
+        guessInput.placeholder = "" // Clear placeholder
+        guessInput.disabled = true // Disable guess input
+        guessInput.blur()
     }
 }
