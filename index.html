@@ -3,10 +3,11 @@
     <head>
         <title>Wordle</title>
         <link rel="stylesheet" href="./main.css">
+        <script src="./index.js"></script>
     </head>
     <body>
         <h1>Wordle</h1>
-        <input id="guess" placeholder="Enter guess" maxlength="5">
+        <input id="guess" placeholder="Enter guess" maxlength="5" autofocus="autofocus" onfocus="this.select()"">
         <table>
             <tr class="guess-row">
                 <td class="letter"></td>
@@ -14,8 +15,7 @@
                 <td class="letter"></td>
                 <td class="letter"></td>
                 <td class="letter"></td>
-            </tr>        
+            </tr>
         </table>
-        <script src="./index.js"></script>
     </body>
 </html>
