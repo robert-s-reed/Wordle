@@ -1,5 +1,8 @@
 body {
     background-color: #262626;
+    margin: auto;
+    max-width: fit-content;
+    text-align: center;
 }
 
 h1 {
@@ -8,7 +11,10 @@ h1 {
 
 input {
     background-color: #262626;
+    border: 1px solid lightgray;
     color: white;
+    width: 60px;
+    text-align: center;
 }
 
 table {
@@ -17,9 +23,8 @@ table {
 
 td {
     color: white;
-    border: 2px solid lightgray;
+    border: 3px solid lightgray;
     width: 60px;
     height: 60px;
-    text-align: center;
     font-size: 32pt;
 }
