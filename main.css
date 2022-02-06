@@ -21,16 +21,20 @@ table {
 }
 
 td {
-    background-color: gray;
     color: white;
-    width: 20px;
-    height: 20px;
-}
-
-.guess-letter {
     background-color: #262626;
     border: 3px solid lightgray;
     width: 60px;
     height: 60px;
     font-size: 32pt;
+}
+
+button {
+    background-color: gray;
+    color: white;
+    border: none;
+    margin: 8px 3px;
+    width: 30px;
+    height: 40px;
+    font-size: 18px;
 }

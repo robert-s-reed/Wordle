@@ -7,83 +7,74 @@
     </head>
     <body>
         <h1>Wordle</h1>
-        <input id="guess" placeholder="Guess" maxlength="5" autofocus="autofocus" onfocus="this.select()">
-        <br><br>
-        <table>
-            <tr class="guess-row">
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
+        <table id="guesses">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
-            <tr class="guess-row">
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
-            <tr class="guess-row">
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
-            <tr class="guess-row">
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
-            <tr class="guess-row">
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
-                <td class="guess-letter"></td>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         </table>
         <br><br>
-        <table>
-            <tr>
-                <td id="q">Q</td>
-                <td id="w">W</td>
-                <td id="e">E</td>
-                <td id="r">R</td>
-                <td id="t">T</td>
-                <td id="y">Y</td>
-                <td id="u">U</td>
-                <td id="i">I</td>
-                <td id="o">O</td>
-                <td id="p">P</td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <td id="a">A</td>
-                <td id="s">S</td>
-                <td id="d">D</td>
-                <td id="f">F</td>
-                <td id="g">G</td>
-                <td id="h">H</td>
-                <td id="j">J</td>
-                <td id="k">K</td>
-                <td id="l">L</td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <td id="z">Z</td>
-                <td id="x">X</td>
-                <td id="c">C</td>
-                <td id="v">V</td>
-                <td id="b">B</td>
-                <td id="n">N</td>
-                <td id="m">M</td>
-            </tr>
-        </table>
+        <div>
+            <button id="q" onclick="kbPress(this.id)">Q</button>
+            <button id="w" onclick="kbPress(this.id)">W</button>
+            <button id="e" onclick="kbPress(this.id)">E</button>
+            <button id="r" onclick="kbPress(this.id)">R</button>
+            <button id="t" onclick="kbPress(this.id)">T</button>
+            <button id="y" onclick="kbPress(this.id)">Y</button>
+            <button id="u" onclick="kbPress(this.id)">U</button>
+            <button id="i" onclick="kbPress(this.id)">I</button>
+            <button id="o" onclick="kbPress(this.id)">O</button>
+            <button id="p" onclick="kbPress(this.id)">P</button>
+            <br>
+            <button id="a" onclick="kbPress(this.id)">A</button>
+            <button id="s" onclick="kbPress(this.id)">S</button>
+            <button id="d" onclick="kbPress(this.id)">D</button>
+            <button id="f" onclick="kbPress(this.id)">F</button>
+            <button id="g" onclick="kbPress(this.id)">G</button>
+            <button id="h" onclick="kbPress(this.id)">H</button>
+            <button id="j" onclick="kbPress(this.id)">J</button>
+            <button id="k" onclick="kbPress(this.id)">K</button>
+            <button id="l" onclick="kbPress(this.id)">L</button>
+            <br>
+            <button id="z" onclick="kbPress(this.id)">Z</button>
+            <button id="x" onclick="kbPress(this.id)">X</button>
+            <button id="c" onclick="kbPress(this.id)">C</button>
+            <button id="v" onclick="kbPress(this.id)">V</button>
+            <button id="b" onclick="kbPress(this.id)">B</button>
+            <button id="n" onclick="kbPress(this.id)">N</button>
+            <button id="m" onclick="kbPress(this.id)">M</button>
+            <button onclick="kbPress('Backspace')">&#60;</button>
+        </div>
     </body>
 </html>

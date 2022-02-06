@@ -1,23 +1,30 @@
 const correctCol = "#21b021"
 const presentCol = "#d4b90d"
 const absentCol = "Gray"
+const kbAbsentBgCol = "#1c1c1c"
+const kbAbsentTxtCol = "Gray"
 
-const guesses = document.getElementsByClassName("guess-row") // Row in table containing guess letters
 var letterCells // Cells in table containing a letter of the guess
+var input = ""
 var solution = "hello"
 const correctLetters = []
 var guessIndex = 0
 
-window.onkeyup = keyUp
+document.addEventListener("keyup", keyUp)
 
-function keyUp(e)
+function keyUp(event)
 {
-    const input = e.target.value.toLowerCase()
+    kbPress(event.key)
+}
 
-    if (input == undefined)
-        return
+function kbPress(letter)
+{
+    if (letter == "Backspace")
+        input = input.slice(0, -1)
+    else if (letter.match(/[a-z]/))
+        input += letter
     
-    letterCells = guesses[guessIndex].getElementsByClassName("guess-letter") // Assign letterCells to the cells of the current guess
+    letterCells = document.getElementById("guesses").rows[guessIndex].cells // Assign letterCells to the cells of the current guess
 
     for (var i = 0; i < 5; i++) // For each letter cell
     {
@@ -36,33 +43,29 @@ function checkGuess(guess)
     for (var i = 0; i < 5; i++) // For each letter in the guess
     {
         const guessChar = guess.charAt(i)
+        const kbLetter = document.getElementById(guessChar)
 
         if (guessChar == solution.charAt(i)) // Is the letter in the same position in the solution?
         {
             letterCells[i].style.backgroundColor = correctCol
-            document.getElementById(guessChar).style.backgroundColor = correctCol
+            kbLetter.style.backgroundColor = correctCol
             correctLetters.push(guessChar)
         }
         else if (solution.includes(guessChar)) // Does the letter appear in any position in the solution?
         {
             letterCells[i].style.backgroundColor = presentCol
             
-            const kbLetter = document.getElementById(guessChar)
             if (!correctLetters.includes(guessChar))
                 kbLetter.style.backgroundColor = presentCol
         }
         else // Letter absent in solution
+        {
             letterCells[i].style.backgroundColor = absentCol
+            kbLetter.style.color = kbAbsentTxtCol
+            kbLetter.style.backgroundColor = kbAbsentBgCol
+        }
     }
 
-    const guessInput = document.getElementById("guess") // Get guess input field
-
-    guessInput.value = "" // Clear guess input
     guessIndex++
-
-    if (guessIndex >= 5) // If guesses exhausted
-    {
-        guessInput.placeholder = "" // Clear placeholder
-        guessInput.disabled = true // Disable guess input
-    }
+    input = "" // Reset input
 }
