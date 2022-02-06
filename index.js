@@ -21,7 +21,7 @@ function kbPress(letter)
 {
     if (letter == "Backspace")
         input = input.slice(0, -1)
-    else if (letter.match(/[a-z]/))
+    else if (letter.match(/^[a-z]$/))
         input += letter
     
     letterCells = document.getElementById("guesses").rows[guessIndex].cells // Assign letterCells to the cells of the current guess
