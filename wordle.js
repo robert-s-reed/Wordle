@@ -1,3 +1,4 @@
+const unknownCol = "#262626"
 const correctCol = "#21b021"
 const presentCol = "#d4b90d"
 const absentCol = "Gray"
@@ -14,12 +15,20 @@ document.addEventListener("keyup", keyUp)
 
 function selectWord()
 {
-    const input = document.getElementById("word-num").value
-    const wordNum = parseInt(input)
-    if (wordNum == NaN || wordNum < 1 || wordNum > 5757 || wordNum.toString().length != input.length)
+    const inputField = document.getElementById("word-num")
+
+    if (inputField.value.length <= 0) // Empty input
+        return // Prevent pressing enter (to submit guess) leading to invalid inputs
+
+    const wordNum = parseInt(inputField.value)
+    if (wordNum == NaN || wordNum < 1 || wordNum > 5757 || wordNum.toString().length != inputField.value.length)
         alert("Enter a valid number between 1 and 5757.")
     else
+    {
         solution = words[wordNum - 1]
+        reset()
+    }
+    inputField.value = ""
 }
 
 function keyUp(event)
@@ -81,4 +90,21 @@ function checkGuess()
 
     guessIndex++
     input = "" // Reset input
+}
+
+function reset()
+{
+    for (var r = 0; r < 5; r++) // For each guesses row
+    {
+        const row = document.getElementById("guesses").rows[r]
+        for (var c = 0; c < 5; c++) // For each column in guess
+        {
+            row.cells[c].innerHTML = "" // Clear cell value
+            row.cells[c].style.backgroundColor = unknownCol
+        }
+    }
+
+    guessIndex = 0
+    input = ""
+    correctLetters.length = 0
 }

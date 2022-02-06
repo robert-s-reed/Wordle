@@ -6,10 +6,10 @@
         <script src="./wordlist.js"></script>
         <script src="./wordle.js"></script>
     </head>
-    <body>
+    <body onload="selectWord()">
         <br>
         <label for="word-num">Select word: </label>
-        <input id="word-num" placeholder="1 to 5757">
+        <input id="word-num" placeholder="1 to 5757" value="1">
         <button onclick="selectWord()">Select</button>
         <br>
         <table id="guesses">
