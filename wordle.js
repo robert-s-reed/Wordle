@@ -12,6 +12,12 @@ var guessIndex = 0
 
 document.addEventListener("keyup", keyUp)
 
+function loadWords()
+{
+    const wordsStr = document.getElementById("words").contentWindow.document.body.childNodes[0].innerHTML // Raw words.txt content
+    alert(wordsStr.slice(0, 5))
+}
+
 function keyUp(event)
 {
     kbPress(event.key)
