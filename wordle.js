@@ -1,7 +1,9 @@
-const unknownCol = "#262626"
+const defaultCol = "#262626"
 const correctCol = "#21b021"
 const presentCol = "#d4b90d"
 const absentCol = "Gray"
+const kbDefaultBgCol = "Gray"
+const kbDefaultTxtCol = "White"
 const kbAbsentBgCol = "#1c1c1c"
 const kbAbsentTxtCol = "Gray"
 
@@ -9,6 +11,7 @@ var letterCells // Cells in table containing a letter of the guess
 var input = ""
 var solution = "hello"
 const correctLetters = []
+const guessedLetters = []
 var guessIndex = 0
 
 document.addEventListener("keyup", keyUp)
@@ -67,6 +70,8 @@ function checkGuess()
         const guessChar = input.charAt(i)
         const kbLetter = document.getElementById(guessChar)
 
+        guessedLetters.push(guessChar) // Add character to list of guessed letters
+
         if (guessChar == solution.charAt(i)) // Is the letter in the same position in the solution?
         {
             letterCells[i].style.backgroundColor = correctCol
@@ -100,10 +105,17 @@ function reset()
         for (var c = 0; c < 5; c++) // For each column in guess
         {
             row.cells[c].innerHTML = "" // Clear cell value
-            row.cells[c].style.backgroundColor = unknownCol
+            row.cells[c].style.backgroundColor = defaultCol
         }
     }
 
+    for (var i = 0; i < guessedLetters.length; i++)
+    {
+        const kbLetter = document.getElementById(guessedLetters[i])
+        kbLetter.style.backgroundColor = kbDefaultBgCol
+        kbLetter.style.color = kbDefaultTxtCol
+    }
+    
     guessIndex = 0
     input = ""
     correctLetters.length = 0
