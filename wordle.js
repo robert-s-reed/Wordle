@@ -6,7 +6,7 @@ const kbAbsentTxtCol = "Gray"
 
 var letterCells // Cells in table containing a letter of the guess
 var input = ""
-var wordNum = 1 // 1-indexed
+const words = []
 var solution = "hello"
 const correctLetters = []
 var guessIndex = 0
@@ -15,15 +15,24 @@ document.addEventListener("keyup", keyUp)
 
 function loadWords()
 {
-    try{
-        const wordsStr = document.getElementById("words").contentWindow.document.body.childNodes[0].innerHTML // Raw words.txt content
-        solution = wordsStr.slice((wordNum - 1) * 5, wordNum * 5 + 1) // Get solution from wordsStr
-        console.log(solution)
+    try
+    {
+        words = document.getElementById("words").contentWindow.document.body.childNodes[0].innerHTML.split(/\r?\n/) // Populate words array
     }
     catch
     {
-        alert("words.txt could not be loaded")
+        alert("Unable to load words.txt")
     }
+}
+
+function selectWord()
+{
+    const input = document.getElementById("word-num").value
+    const wordNum = parseInt(input)
+    if (wordNum == NaN || wordNum < 1 || wordNum > 5757 || wordNum.toString().length != input.length)
+        alert("Enter a valid number between 1 and 5757.")
+    else
+        solution = words[wordNum - 1]
 }
 
 function keyUp(event)
@@ -47,16 +56,16 @@ function kbPress(letter)
         else
             letterCells[i].innerHTML = "" // Ensure cell is empty (e.g., if a character was removed)
     }
-
-    if (input.length == 5) // Full guess input
-        checkGuess(input)
 }
 
-function checkGuess(guess)
+function checkGuess()
 {
+    if (input.length != 5 || !words.includes(input))
+        return
+
     for (var i = 0; i < 5; i++) // For each letter in the guess
     {
-        const guessChar = guess.charAt(i)
+        const guessChar = input.charAt(i)
         const kbLetter = document.getElementById(guessChar)
 
         if (guessChar == solution.charAt(i)) // Is the letter in the same position in the solution?

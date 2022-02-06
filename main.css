@@ -1,18 +1,15 @@
 body {
     background-color: #262626;
     text-align: center;
-    touch-action: manipulation;
-}
-
-h1 {
     color: white;
+    touch-action: manipulation;
 }
 
 input {
     background-color: #262626;
     border: 1px solid lightgray;
     color: white;
-    width: 60px;
+    width: 45pt;
     text-align: center;
 }
 
@@ -30,7 +27,7 @@ td {
     font-size: 32pt;
 }
 
-button {
+#keyboard button {
     background-color: gray;
     color: white;
     border: none;

@@ -6,8 +6,12 @@
         <script src="./wordle.js"></script>
     </head>
     <body>
-        <iframe id="words" src="words.txt" onload="loadWords()" style="display: none"></iframe>
-        <h1>Wordle</h1>
+        <iframe id="words" src="./words.txt" onload="loadWords()" style="display: none"></iframe>
+        <br>
+        <label for="word-num">Select word: </label>
+        <input id="word-num" placeholder="1 to 5757">
+        <button onclick="selectWord()">Select</button>
+        <br>
         <table id="guesses">
             <tr>
                 <td></td>
@@ -46,7 +50,7 @@
             </tr>
         </table>
         <br><br>
-        <div>
+        <div id="keyboard">
             <button id="q" onclick="kbPress(this.id)">Q</button>
             <button id="w" onclick="kbPress(this.id)">W</button>
             <button id="e" onclick="kbPress(this.id)">E</button>
@@ -68,6 +72,7 @@
             <button id="k" onclick="kbPress(this.id)">K</button>
             <button id="l" onclick="kbPress(this.id)">L</button>
             <br>
+            <button onclick="checkGuess()">#</button>
             <button id="z" onclick="kbPress(this.id)">Z</button>
             <button id="x" onclick="kbPress(this.id)">X</button>
             <button id="c" onclick="kbPress(this.id)">C</button>
