@@ -6,6 +6,7 @@ const kbAbsentTxtCol = "Gray"
 
 var letterCells // Cells in table containing a letter of the guess
 var input = ""
+var wordNum = 1 // 1-indexed
 var solution = "hello"
 const correctLetters = []
 var guessIndex = 0
@@ -14,8 +15,15 @@ document.addEventListener("keyup", keyUp)
 
 function loadWords()
 {
-    const wordsStr = document.getElementById("words").contentWindow.document.body.childNodes[0].innerHTML // Raw words.txt content
-    alert(wordsStr.slice(0, 5))
+    try{
+        const wordsStr = document.getElementById("words").contentWindow.document.body.childNodes[0].innerHTML // Raw words.txt content
+        solution = wordsStr.slice((wordNum - 1) * 5, wordNum * 5 + 1) // Get solution from wordsStr
+        console.log(solution)
+    }
+    catch
+    {
+        alert("words.txt could not be loaded")
+    }
 }
 
 function keyUp(event)
