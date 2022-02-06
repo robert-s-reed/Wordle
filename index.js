@@ -4,30 +4,13 @@ const absentCol = "Gray"
 const kbAbsentBgCol = "#1c1c1c"
 const kbAbsentTxtCol = "Gray"
 
-const kbHeightMultiplier = 1.5
-
-var guesses // Table containing the guesses
 var letterCells // Cells in table containing a letter of the guess
-var keyboard
 var input = ""
 var solution = "hello"
 const correctLetters = []
 var guessIndex = 0
 
 document.addEventListener("keyup", keyUp)
-
-function init()
-{
-    guesses = document.getElementById("guesses")
-    guesses.style.height = `${guesses.offsetWidth}px` // Make table height same as width (which is a % of the screen)
-
-    keyboard = document.getElementById("keyboard")
-    for (var i = 0; i < keyboard.childElementCount; i++) // For each keyboard button
-    {
-        const button = keyboard.children[i]
-        button.style.height = `${button.offsetWidth * kbHeightMultiplier}px` // Set button height based on its width
-    }
-}
 
 function keyUp(event)
 {
@@ -37,11 +20,11 @@ function keyUp(event)
 function kbPress(letter)
 {
     if (letter == "Backspace")
-        input = input.slice(0, -1) // Remove last character from input
+        input = input.slice(0, -1)
     else if (letter.match(/^[a-z]$/))
         input += letter
     
-    letterCells = guesses.rows[guessIndex].cells // Assign letterCells to the cells of the current guess
+    letterCells = document.getElementById("guesses").rows[guessIndex].cells // Assign letterCells to the cells of the current guess
 
     for (var i = 0; i < 5; i++) // For each letter cell
     {

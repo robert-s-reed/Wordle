@@ -17,7 +17,6 @@ input {
 }
 
 table {
-    width: 30%;
     border-spacing: 10px;
     margin: auto;
 }
@@ -26,9 +25,9 @@ td {
     color: white;
     background-color: #262626;
     border: 3px solid lightgray;
-    width: 20%;
-    height: 20%;
-    font-size: 100%;
+    width: 60px;
+    height: 60px;
+    font-size: 32pt;
 }
 
 button {
@@ -36,5 +35,7 @@ button {
     color: white;
     border: none;
     margin: 8px 3px;
-    width: 2%;
+    width: 30px;
+    height: 40px;
+    font-size: 18px;
 }
