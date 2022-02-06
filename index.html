@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="./main.css">
         <script src="./index.js"></script>
     </head>
-    <body>
+    <body onload="init()">
         <h1>Wordle</h1>
         <table id="guesses">
             <tr>
@@ -44,8 +44,7 @@
                 <td></td>
             </tr>
         </table>
-        <br><br>
-        <div>
+        <div id="keyboard">
             <button id="q" onclick="kbPress(this.id)">Q</button>
             <button id="w" onclick="kbPress(this.id)">W</button>
             <button id="e" onclick="kbPress(this.id)">E</button>
