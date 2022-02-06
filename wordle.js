@@ -6,24 +6,11 @@ const kbAbsentTxtCol = "Gray"
 
 var letterCells // Cells in table containing a letter of the guess
 var input = ""
-const words = []
 var solution = "hello"
 const correctLetters = []
 var guessIndex = 0
 
 document.addEventListener("keyup", keyUp)
-
-function loadWords()
-{
-    try
-    {
-        words = document.getElementById("words").contentWindow.document.body.childNodes[0].innerHTML.split(/\r?\n/) // Populate words array
-    }
-    catch
-    {
-        alert("Unable to load words.txt")
-    }
-}
 
 function selectWord()
 {
@@ -37,7 +24,10 @@ function selectWord()
 
 function keyUp(event)
 {
-    kbPress(event.key)
+    if (event.key == "Enter")
+        checkGuess()
+    else
+        kbPress(event.key)
 }
 
 function kbPress(letter)
